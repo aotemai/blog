@@ -1,42 +1,68 @@
 package com.blog.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.blog.NotFoundExceptionn;
+import com.blog.service.BlogService;
+import com.blog.service.TagService;
+import com.blog.service.TypeService;
+import com.blog.vo.BlogQuery;
 
 
 
 @Controller
 public class IndexController {
 
+	@Autowired
+	private BlogService blogService;
+	
+	 @Autowired
+	 private TypeService typeService;
+	 
+	 @Autowired
+	 private TagService tagService;
+	
 	//@GetMapping("/{id}/{name}")
 	@GetMapping("/")
 //	public String index(@PathVariable Integer id,@PathVariable String name)  {
-	public String index()  {
+	public String index(@PageableDefault(size=6,sort=("updateTime"),direction = Sort.Direction.DESC) Pageable pageable,
+			 Model model)  {
 	//	int i = 9/0;
-	/*	String blog = null;
-		if(blog == null) {
-			
-			throw new NotFoundExceptionn("博客找不到");
-		}*/
+	//	String blog = null;
+	//	if(blog == null) {		
+	//		throw new NotFoundExceptionn("博客找不到");
+	//	}
 	//	System.out.println("-----index------");
+		 model.addAttribute("page",blogService.listBlog(pageable));//拿到分页数据放在model里面
+		 model.addAttribute("types", typeService.listTypeTop(6));
+		 model.addAttribute("tags", tagService.listTagTop(10));
+		 model.addAttribute("recommendBlogs", blogService.listRecommendBlogTop(8));
 		return "index";
 	}
 	
-	@GetMapping("/blog")
-	public String blog()  {
-		return "blog";
-	}
+
+    @PostMapping("/search")
+    public String search(@PageableDefault(size = 6, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
+                         @RequestParam String query, Model model) {
+        model.addAttribute("page", blogService.listBlog("%"+query+"%", pageable));
+        model.addAttribute("query", query);
+        return "search";
+    }
 	
-	@GetMapping("/tage")
-	public String tage()  {
-		return "tage";
-	}
+    @GetMapping("/blog/{id}")
+    public String blog(@PathVariable Long id,Model model) {
+        model.addAttribute("blog", blogService.getAndConvert(id));
+        return "blog";
+    }
 	
-	@GetMapping("/types")
-	public String types()  {
-		return "types";
-	}
+
 }

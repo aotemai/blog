@@ -31,4 +31,6 @@ public interface TagService {
 	//删除
 	void deleteTag(Long id);
 	
+	 List<Tag> listTagTop(Integer size);
+	
 }

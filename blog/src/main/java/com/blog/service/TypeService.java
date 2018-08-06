@@ -26,4 +26,6 @@ public interface TypeService {
 	//删除
 	void deleteType(Long id);//根据id删除，无返回类型
 	
+	List<Type> listTypeTop(Integer size);
+	
 }

@@ -7,7 +7,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.blog.dao.TypeRepository;
@@ -79,6 +81,14 @@ public class TypeServiceImpl implements TypeService{
 	public List<Type> listType() {
 		// TODO Auto-generated method stub
 		  return typeRepository.findAll();
+	}
+
+	//按大小排序
+	@Override
+	public List<Type> listTypeTop(Integer size) {		
+		Sort sort = new Sort(Sort.Direction.DESC,"blogs.size");		
+		Pageable pageable = new PageRequest(0,size,sort);	
+		return typeRepository.findTop(pageable);
 	}
 
 }

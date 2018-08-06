@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head th:replace="_fragments :: head(~{::title})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width",inital-scale="1.0">
     <title>归档</title>
@@ -10,7 +10,7 @@
 </head>
 <body>
 <!--导航 -->
-<nav class="ui inverted attached segment  m-padded-tb-mini m-shadow-small">
+<nav th:replace="_fragments :: menu(4)" class="ui inverted attached segment  m-padded-tb-mini m-shadow-small">
     <div class="ui container " >
         <div class="ui inverted secondary stackable menu " >
             <h2 class="ui teal header item">LaoXiaoYu</h2>
@@ -34,120 +34,42 @@
     </a>
 </nav>
 
-<!--中间部分-->
-<div class="m-container-small m-padded-tb-big">
+<!--中间内容-->
+  <div  class="m-container-small m-padded-tb-big">
     <div class="ui container">
-        <!--header-->
-        <div class="ui top attached padded segment"><!--ui segment出现一个框，top attached对应下面的ui segment两个框连接起来-->
-            <div class="ui middle aligned two column grid">
-                <div class="column">
-                    <h3 class="ui teal header">归档</h3>
-                </div>
-                <div class="right aligned column">
-                    共<h2 class="ui orange header m-inline-block m-text-thin">14</h2>篇
-                </div>
-            </div>
+      <!--header-->
+      <div class="ui top attached padded segment">
+        <div class="ui middle aligned two column grid">
+          <div class="column">
+            <h3 class="ui teal header">归档</h3>
+          </div>
+          <div class="right aligned column">
+            共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${blogCount}"> 114 </h2> 篇博客
+          </div>
         </div>
-        <h2 class="ui center aligned header">2017</h2>
-        <div class="ui vertical fluid menu"><!--fluid是填充整个宽度-->
-            <a href="#" target="_blank"class="item">
-                <span>
-                      <i class="mini teal circle icon"></i>  杰卡斯的就开始大幅了
-                    <div class="ui teal basic left pointing label m-padded-mini">6月12号</div>
-                </span>
-                <div class="ui orange basic left pointing label m-padded-mini">原创</div>
-            </a>
-            <a href="#" target="_blank"class="item">
-                <span>
-                      <i class="mini teal circle icon"></i>  杰卡斯的就开始大幅了
-                    <div class="ui teal basic left pointing label m-padded-mini">6月12号</div>
-                </span>
-                <div class="ui orange basic left pointing label m-padded-mini">原创</div>
-            </a>
-            <a href="#" target="_blank"class="item">
-                <span>
-                      <i class="mini teal circle icon"></i>  杰卡斯的就开始大幅了
-                    <div class="ui teal basic left pointing label m-padded-mini">6月12号</div>
-                </span>
-                <div class="ui orange basic left pointing label m-padded-mini">原创</div>
-            </a>
-            <a href="#" target="_blank"class="item">
-                <span>
-                      <i class="mini teal circle icon"></i>  杰卡斯的就开始大幅了
-                    <div class="ui teal basic left pointing label m-padded-mini">6月12号</div>
-                </span>
-                <div class="ui orange basic left pointing label m-padded-mini">原创</div>
-            </a>
-            <a href="#" target="_blank"class="item">
-                <span>
-                      <i class="mini teal circle icon"></i>  杰卡斯的就开始大幅了
-                    <div class="ui teal basic left pointing label m-padded-mini">6月12号</div>
-                </span>
-                <div class="ui orange basic left pointing label m-padded-mini">原创</div>
-            </a>
-            <a href="#" target="_blank"class="item">
-                <span>
-                      <i class="mini teal circle icon"></i>  杰卡斯的就开始大幅了
-                    <div class="ui teal basic left pointing label m-padded-mini">6月12号</div>
-                </span>
-                <div class="ui orange basic left pointing label m-padded-mini">原创</div>
-            </a>
-        </div>
+      </div>
 
-        <h2 class="ui center aligned header">2016</h2>
-        <div class="ui vertical fluid menu"><!--fluid是填充整个宽度-->
-            <a href="#" target="_blank"class="item">
-                <span>
-                      <i class="mini teal circle icon"></i>  杰卡斯的就开始大幅了
-                    <div class="ui teal basic left pointing label m-padded-mini">6月12号</div>
-                </span>
-                <div class="ui orange basic left pointing label m-padded-mini">原创</div>
-            </a>
-            <a href="#" target="_blank"class="item">
-                <span>
-                      <i class="mini teal circle icon"></i>  杰卡斯的就开始大幅了
-                    <div class="ui teal basic left pointing label m-padded-mini">6月12号</div>
-                </span>
-                <div class="ui orange basic left pointing label m-padded-mini">原创</div>
-            </a>
-            <a href="#" target="_blank"class="item">
-                <span>
-                      <i class="mini teal circle icon"></i>  杰卡斯的就开始大幅了
-                    <div class="ui teal basic left pointing label m-padded-mini">6月12号</div>
-                </span>
-                <div class="ui orange basic left pointing label m-padded-mini">原创</div>
-            </a>
-            <a href="#" target="_blank"class="item">
-                <span>
-                      <i class="mini teal circle icon"></i>  杰卡斯的就开始大幅了
-                    <div class="ui teal basic left pointing label m-padded-mini">6月12号</div>
-                </span>
-                <div class="ui orange basic left pointing label m-padded-mini">原创</div>
-            </a>
-            <a href="#" target="_blank"class="item">
-                <span>
-                      <i class="mini teal circle icon"></i>  杰卡斯的就开始大幅了
-                    <div class="ui teal basic left pointing label m-padded-mini">6月12号</div>
-                </span>
-                <div class="ui orange basic left pointing label m-padded-mini">原创</div>
-            </a>
-            <a href="#" target="_blank"class="item">
-                <span>
-                      <i class="mini teal circle icon"></i>  杰卡斯的就开始大幅了
-                    <div class="ui teal basic left pointing label m-padded-mini">6月12号</div>
-                </span>
-                <div class="ui orange basic left pointing label m-padded-mini">原创</div>
-            </a>
-        </div>
+      <th:block th:each="item : ${archiveMap}">
+      <h3 class="ui center aligned header" th:text="${item.key}">2017-03</h3>
+      <div class="ui fluid vertical menu">
+        <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item" th:each="blog : ${item.value}">
+          <span>
+            <i class="mini teal circle icon"></i><span th:text="${blog.title}">关于刻意练习的清单</span>
+            <div class="ui teal basic left pointing label m-padded-mini " th:text="${#dates.format(blog.updateTime,'MMMdd')}">9月03</div>
+          </span>
+          <div class="ui orange basic left pointing label m-padded-mini " th:text="${blog.flag}">原创</div>
+        </a>
+        
+      </div>
+      </th:block>
+
     </div>
-</div>
+  </div>
 
-<br>
-<br>
-<!--底部部分-->
-<footer class="ui inverted vertical segment m-padded-tb-massive">
+ <!--底部部分-->
+<!-- <footer class="ui inverted vertical segment m-padded-tb-massive">
     <div class="ui center aligned container">
-        <div class="ui divided inverted stackable grid"><!--grid分为16份-->
+        <div class="ui divided inverted stackable grid">grid分为16份
             <div class="three wide column">
                 <div class="ui inverted link list">
                     <div class="item">
@@ -181,7 +103,7 @@
         <p class="m-text-thin m-text-spaced m-opacity-tiny">I hope to meet you 🌹</p>
     </div>
 
-</footer>
+</footer> -->
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>

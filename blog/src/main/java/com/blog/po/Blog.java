@@ -46,11 +46,21 @@ public class Blog {
 	@ManyToOne
 	private User user;
 	
+    private String description;
+	
 	@Transient
 	private String tagIds;
 	
 	public String getTagIds() {
 		return tagIds;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public void setTagIds(String tagIds) {
@@ -203,13 +213,42 @@ public class Blog {
 		this.type = type;
 	}
 
-	@Override
-	public String toString() {
-		return "Blog [id=" + id + ", title=" + title + ", content=" + content + ", firstPicture=" + firstPicture
-				+ ", flag=" + flag + ", views=" + views + ", appreciation=" + appreciation + ", shareStatement="
-				+ shareStatement + ", commentabled=" + commentabled + ", published=" + published + ", recommend="
-				+ recommend + ", creatTime=" + creatTime + ", updateTime=" + updateTime + ", type=" + type + "]";
-	}
+	   public void init() {
+	        this.tagIds = tagsToIds(this.getTags());
+	    }
+
+	    //1,2,3
+	    private String tagsToIds(List<Tag> tags) {
+	        if (!tags.isEmpty()) {
+	            StringBuffer ids = new StringBuffer();
+	            boolean flag = false;
+	            for (Tag tag : tags) {
+	                if (flag) {
+	                    ids.append(",");
+	                } else {
+	                    flag = true;
+	                }
+	                ids.append(tag.getId());
+	            }
+	            return ids.toString();
+	        } else {
+	            return tagIds;
+	        }
+	    }
+
+		@Override
+		public String toString() {
+			return "Blog [id=" + id + ", title=" + title + ", content=" + content + ", firstPicture=" + firstPicture
+					+ ", flag=" + flag + ", views=" + views + ", appreciation=" + appreciation + ", shareStatement="
+					+ shareStatement + ", commentabled=" + commentabled + ", published=" + published + ", recommend="
+					+ recommend + ", creatTime=" + creatTime + ", updateTime=" + updateTime + ", type=" + type
+					+ ", user=" + user + ", description=" + description + ", tagIds=" + tagIds + ", comments="
+					+ comments + ", tags=" + tags + "]";
+		}
+	
+	
+	
+	
 
 
 }
