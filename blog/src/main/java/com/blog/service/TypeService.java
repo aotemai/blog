@@ -1,5 +1,7 @@
 package com.blog.service;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -15,6 +17,10 @@ public interface TypeService {
 	Type getTypeByName(String name);
 	//分页查询
 	Page<Type> ListType(Pageable pageable);
+	
+
+    List<Type> listType();
+    
 	//修改
 	Type updateType(Long id,Type type);//根据id修改，返回一个type
 	//删除

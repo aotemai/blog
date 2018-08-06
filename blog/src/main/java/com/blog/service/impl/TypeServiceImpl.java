@@ -1,5 +1,7 @@
 package com.blog.service.impl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.BeanUtils;
@@ -71,6 +73,12 @@ public class TypeServiceImpl implements TypeService{
 	public Type getTypeByName(String name) {
 		// TODO Auto-generated method stub
 		return typeRepository.findByName(name);
+	}
+
+	@Override
+	public List<Type> listType() {
+		// TODO Auto-generated method stub
+		  return typeRepository.findAll();
 	}
 
 }

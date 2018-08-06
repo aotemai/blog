@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.data.annotation.Transient;
+
 @Entity//声明实体类
 @Table(name="t_blog")//指定对应数据库的名字
 public class Blog {
@@ -31,7 +33,7 @@ public class Blog {
 	private boolean appreciation;
 	private boolean shareStatement;
 	private boolean commentabled;
-	private boolean published;
+	private boolean published;//1就是true发布，2就是false
 	private boolean recommend;
 	@Temporal(TemporalType.TIMESTAMP)//这个需要注意时间要添加注解来和数据库关联
 	private Date creatTime;
@@ -44,6 +46,17 @@ public class Blog {
 	@ManyToOne
 	private User user;
 	
+	@Transient
+	private String tagIds;
+	
+	public String getTagIds() {
+		return tagIds;
+	}
+
+	public void setTagIds(String tagIds) {
+		this.tagIds = tagIds;
+	}
+
 	public List<Comment> getComments() {
 		return comments;
 	}

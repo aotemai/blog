@@ -1,4 +1,4 @@
-package com.blog.web;
+/*package com.blog.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,4 +13,6 @@ public class BlogController {
 		return "admin/blogs";
 	}
 	
+	
 }
+*/
