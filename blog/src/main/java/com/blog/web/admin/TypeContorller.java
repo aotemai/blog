@@ -28,7 +28,7 @@ public class TypeContorller {
 
 	@GetMapping("/types")
 	//@PageableDefault默认的参数，sort= {"id"},direction=Sort.Direction.DESC根据id倒叙排序
-	public String types(@PageableDefault(size=3,
+	public String types(@PageableDefault(size=6,
 	sort= {"id"},direction=Sort.Direction.DESC) Pageable pageable,
 			Model model) {//根据前端页面传递参数自动封装成Pageable对象，springboot的特性
 

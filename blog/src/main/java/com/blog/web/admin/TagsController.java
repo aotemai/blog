@@ -51,7 +51,7 @@ public class TagsController {
 	    public String post(@Valid Tag tag,BindingResult result, RedirectAttributes attributes) {
 	        Tag tag1 = tagService.getTagByName(tag.getName());
 	        if (tag1 != null) {
-	            result.rejectValue("name","nameError","不能添加重复的分类");
+	            result.rejectValue("name","nameError","不能添加重复的标签");
 	        }
 	        if (result.hasErrors()) {
 	            return "admin/tags-input";

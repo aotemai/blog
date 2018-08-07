@@ -30,9 +30,9 @@ public interface BlogService {
 	 
 	 Blog getAndConvert(Long id);
 	 
-	   Page<Blog> listBlog(Long tagId,Pageable pageable);
+	 Page<Blog> listBlog(Long tagId,Pageable pageable);
 	   
-	   Map<String,List<Blog>> archiveBlog();
+	 Map<String,List<Blog>> archiveBlog();
 
-	    Long countBlog();
+	 Long countBlog();
 }
